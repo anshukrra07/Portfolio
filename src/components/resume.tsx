@@ -1,5 +1,5 @@
 import { useState } from "react";
-import resume from "../assets/resume.pdf";
+import resume from "../assets/resume-14.pdf";
 
 export default function Resume() {
   const [showPreview, setShowPreview] = useState(false);

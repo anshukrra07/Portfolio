@@ -1,15 +1,39 @@
 const skillGroups = [
   {
-    title: "Frontend",
-    skills: ["React", "TypeScript", "JavaScript", "HTML", "CSS"],
+    title: "Programming Languages",
+    skills: ["C", "C++", "Java", "Python", "JavaScript"],
   },
   {
-    title: "Backend",
-    skills: ["Node.js", "Express", "MongoDB", "JWT"],
+    title: "Web & Application Development",
+    skills: ["HTML", "CSS", "React (Basic)", "Node.js (Basic)", "Express.js (Basic)"],
   },
   {
-    title: "Tools",
-    skills: ["Git", "GitHub", "REST APIs", "Postman"],
+    title: "Databases",
+    skills: ["MySQL", "MongoDB"],
+  },
+  {
+    title: "Cyber & Technology Risk",
+    skills: [
+      "Authentication & Authorization (JWT)",
+      "Role-Based Access Control (RBAC)",
+      "Session Management",
+      "Secure SDLC",
+      "Data Validation",
+      "Application-Level Security Controls",
+    ],
+  },
+  {
+    title: "Risk & Compliance",
+    skills: [
+      "Technology Risk Awareness",
+      "IT General Controls (ITGC - Basic)",
+      "Compliance & Regulatory Awareness",
+      "Control Evaluation (Foundational)",
+    ],
+  },
+  {
+    title: "Tools & Platforms",
+    skills: ["Git", "GitHub", "Postman", "REST APIs", "VS Code"],
   },
 ];
 
