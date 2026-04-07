@@ -30,14 +30,20 @@ const steps = [
 export default function Experience() {
   return (
     <section className="journey-section" id="journey">
-      <div className="section-heading">
+      <motion.div
+        className="section-heading"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <span className="section-label">System log</span>
         <h2>How I approach UI and product experience.</h2>
         <p className="section-subtitle">
           The goal is not only to make a page look good. It should feel easy to move
           through, make the content believable, and leave a strong final impression.
         </p>
-      </div>
+      </motion.div>
 
       <div className="timeline">
         {steps.map((step, index) => (

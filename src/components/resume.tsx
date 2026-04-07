@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import resume from "../assets/resume-14.pdf";
 
 const resumeHighlights = [
@@ -9,16 +10,28 @@ const resumeHighlights = [
 export default function Resume() {
   return (
     <section className="resume-section" id="resume">
-      <div className="section-heading">
+      <motion.div
+        className="section-heading"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <span className="section-label">Resume</span>
         <h2>A concise version of the story behind the work.</h2>
         <p className="section-subtitle">
           For recruiters and collaborators who want the faster overview before
           diving deeper into my projects and profiles.
         </p>
-      </div>
+      </motion.div>
 
-      <div className="resume-card">
+      <motion.div
+        className="resume-card"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.48, delay: 0.08 }}
+      >
         <div className="resume-card-copy">
           <h3>What you&apos;ll find inside</h3>
           <ul className="resume-highlights">
@@ -36,7 +49,7 @@ export default function Resume() {
             Download PDF
           </a>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

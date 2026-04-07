@@ -2,16 +2,11 @@ import { motion } from "framer-motion";
 import profile from "../assets/profile.jpg";
 import resume from "../assets/resume-14.pdf";
 
-const heroStats = [
-  { value: "4+", label: "featured projects" },
-  { value: "UI + API", label: "end-to-end delivery" },
-  { value: "Fast", label: "smooth on every screen" },
-];
-
 export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-spotlight" aria-hidden="true" />
 
       <motion.div
         className="hero-copy"
@@ -45,15 +40,6 @@ export default function Hero() {
             Open resume
           </a>
         </div>
-
-        <div className="hero-proof">
-          {heroStats.map((item) => (
-            <div key={item.label} className="proof-card">
-              <strong>{item.value}</strong>
-              <span>{item.label}</span>
-            </div>
-          ))}
-        </div>
       </motion.div>
 
       <motion.div
@@ -62,19 +48,39 @@ export default function Hero() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
       >
-        <div className="portrait-frame">
-          <div className="portrait-glow" aria-hidden="true" />
-          <img src={profile} alt="Himanshu Kumar portrait" />
-        </div>
+        <div className="hero-visual-shell">
+          <div className="hero-orbit hero-orbit-large" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-small" aria-hidden="true" />
 
-        <div className="floating-note floating-note-top">
-          <span>Design-minded</span>
-          <strong>Clean, premium UI</strong>
-        </div>
+          <div className="portrait-frame">
+            <div className="portrait-glow" aria-hidden="true" />
+            <img src={profile} alt="Himanshu Kumar portrait" />
+          </div>
 
-        <div className="floating-note floating-note-bottom">
-          <span>Build quality</span>
-          <strong>React, APIs, performance</strong>
+          <div className="floating-note floating-note-top">
+            <span>Design-minded</span>
+            <strong>Clean, premium UI</strong>
+          </div>
+
+          <div className="floating-note floating-note-bottom">
+            <span>Build quality</span>
+            <strong>React, APIs, performance</strong>
+          </div>
+
+          <div className="floating-note floating-note-side">
+            <span>Focus mode</span>
+            <strong>Product clarity + motion polish</strong>
+          </div>
+
+          <div className="hero-signal-card">
+            <span className="hero-signal-label">Live signal</span>
+            <div className="hero-signal-bar">
+              <span />
+              <span />
+              <span />
+            </div>
+            <strong>Interactive systems</strong>
+          </div>
         </div>
       </motion.div>
 

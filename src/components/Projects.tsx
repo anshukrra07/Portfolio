@@ -89,14 +89,20 @@ export default function Projects() {
 
   return (
     <section className="projects-section" id="projects">
-      <div className="section-heading">
+      <motion.div
+        className="section-heading"
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <span className="section-label">Selected missions</span>
         <h2>Projects that give people a reason to keep exploring.</h2>
         <p className="section-subtitle">
           The strongest work is not only visual. It solves a real product problem,
           supports the story with proof, and makes the result easy to understand fast.
         </p>
-      </div>
+      </motion.div>
 
       <motion.article
         className="case-study-shell"
