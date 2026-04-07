@@ -1,60 +1,53 @@
 const skillGroups = [
   {
-    title: "Programming Languages",
-    skills: ["C", "C++", "Java", "Python", "JavaScript"],
+    title: "Frontend systems",
+    description:
+      "Interfaces that feel intentional, responsive, and easy to move through.",
+    skills: ["React", "TypeScript", "JavaScript", "Responsive UI", "CSS"],
   },
   {
-    title: "Web & Application Development",
-    skills: ["HTML", "CSS", "React (Basic)", "Node.js (Basic)", "Express.js (Basic)"],
+    title: "Backend delivery",
+    description:
+      "Application logic, APIs, authentication, and structured data flow.",
+    skills: ["Node.js", "Express.js", "REST APIs", "JWT", "MongoDB", "MySQL"],
   },
   {
-    title: "Databases",
-    skills: ["MySQL", "MongoDB"],
+    title: "Product mindset",
+    description:
+      "I think about layout, trust, navigation, and how real users understand a page.",
+    skills: ["UX thinking", "Information hierarchy", "Reusable components", "Performance focus"],
   },
   {
-    title: "Cyber & Technology Risk",
-    skills: [
-      "Authentication & Authorization (JWT)",
-      "Role-Based Access Control (RBAC)",
-      "Session Management",
-      "Secure SDLC",
-      "Data Validation",
-      "Application-Level Security Controls",
-    ],
-  },
-  {
-    title: "Risk & Compliance",
-    skills: [
-      "Technology Risk Awareness",
-      "IT General Controls (ITGC - Basic)",
-      "Compliance & Regulatory Awareness",
-      "Control Evaluation (Foundational)",
-    ],
-  },
-  {
-    title: "Tools & Platforms",
-    skills: ["Git", "GitHub", "Postman", "REST APIs", "VS Code"],
+    title: "Tools I rely on",
+    description:
+      "The workflow stack I use to design, build, test, and iterate quickly.",
+    skills: ["Git", "GitHub", "Postman", "VS Code", "Problem solving"],
   },
 ];
 
 export default function Skills() {
   return (
-    <section className="skills-section">
-      <h2>Skills</h2>
-      <p className="section-subtitle">
-        Technologies I use to build scalable, maintainable applications.
-      </p>
+    <section className="skills-section" id="skills">
+      <div className="section-heading">
+        <span className="section-label">Core systems</span>
+        <h2>The mix of skills behind the experience.</h2>
+        <p className="section-subtitle">
+          Good portfolios are not only pretty. They need structure, logic, usability,
+          and the engineering discipline to make the design hold up in production.
+        </p>
+      </div>
 
       <div className="skills-grid">
         {skillGroups.map((group) => (
-          <div key={group.title} className="skill-card">
+          <article key={group.title} className="skill-card">
             <h3>{group.title}</h3>
+            <p>{group.description}</p>
             <div className="skill-list">
-              {group.skills.map((s) => (
-                <span key={s}>{s}</span>
+              {group.skills.map((skill) => (
+                <span key={skill}>{skill}</span>
               ))}
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
