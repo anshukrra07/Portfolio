@@ -8,9 +8,12 @@ const stack = [
   "Express",
   "MongoDB",
   "MySQL",
+  "Python",
+  "FastAPI",
   "REST APIs",
   "JWT",
-  "Responsive UI",
+  "ChromaDB",
+  "Sentence Transformers",
   "GitHub",
   "Postman",
 ];
@@ -29,14 +32,32 @@ export default function About() {
           <span className="section-label">Initialization</span>
           <h2>I turn ideas into products that feel clear, sharp, and memorable.</h2>
           <p className="section-subtitle">
-            I&apos;m a full-stack developer who cares about more than making things work.
-            I care about the way people move through an interface, the confidence a
-            layout creates, and the polish that makes a portfolio feel worth exploring.
+            I&apos;m a full-stack developer who likes building products people can
+            actually use, not just admire. My GitHub work spans AI-assisted commerce,
+            campus wellness, security dashboards, travel interfaces, and cleaner
+            product-style UI systems.
           </p>
           <p className="about-note">
-            I like interfaces with structure, systems with clear logic, and products
-            that feel considered instead of generic.
+            I&apos;ve also taken part in 10+ hackathons and won 4 of them, which taught
+            me to move quickly, trim the fluff, and ship the strongest version of an idea.
           </p>
+
+          {/* Education block */}
+          <div className="education-block">
+            <span className="education-label">Education</span>
+            <div className="education-card">
+              <div className="education-row">
+                <strong>B.Tech · Computer Science &amp; Engineering</strong>
+                <span className="education-badge">2022 – 2026</span>
+              </div>
+              <p>Vignan&apos;s Foundation for Science, Technology &amp; Research · Andhra Pradesh</p>
+              <div className="education-meta">
+                <span>CGPA <strong>7.28</strong></span>
+                <span>·</span>
+                <span>AI / ML focus</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="about-stack">
@@ -61,11 +82,19 @@ export default function About() {
               </div>
               <div className="terminal-line">
                 <span className="terminal-key">"backend"</span>:{" "}
-                <span className="terminal-value">["Node.js", "Express", "APIs"]</span>,
+                <span className="terminal-value">["Node.js", "Express", "FastAPI"]</span>,
+              </div>
+              <div className="terminal-line">
+                <span className="terminal-key">"ai_ml"</span>:{" "}
+                <span className="terminal-value">["Gemini", "ChromaDB", "FastAPI"]</span>,
               </div>
               <div className="terminal-line">
                 <span className="terminal-key">"focus"</span>:{" "}
-                <span className="terminal-value">"premium UI with clean execution"</span>
+                <span className="terminal-value">"full-stack · UI systems · AI products"</span>,
+              </div>
+              <div className="terminal-line">
+                <span className="terminal-key">"signal"</span>:{" "}
+                <span className="terminal-value">"10+ hackathons · 4 wins"</span>
               </div>
               <div className="terminal-object">{"}"}</div>
               <div className="terminal-ready">

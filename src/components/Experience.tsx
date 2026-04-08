@@ -3,27 +3,31 @@ import { motion } from "framer-motion";
 const steps = [
   {
     stage: "01",
-    title: "Understand the user flow first",
+    title: "Hackathons trained me to ship fast and trim the fluff",
+    timelineLabel: "Competition",
     detail:
-      "Before styling, I focus on what the visitor needs to notice, click, trust, and remember. Good UI starts with clarity, not decoration.",
+      "I&apos;ve taken part in 10+ hackathons and won 4 of them. That pressure made me better at turning rough ideas into demos that feel usable, clear, and pitch-ready fast.",
   },
   {
     stage: "02",
-    title: "Design hierarchy that guides attention",
+    title: "My GitHub work now spans multiple real product spaces",
+    timelineLabel: "Shipping",
     detail:
-      "I use typography, spacing, contrast, and section rhythm to control what feels primary, secondary, and supporting across the whole page.",
+      "The public repos range from AI-assisted e-commerce and campus wellness to travel interfaces, modular camera UI, contest tracking, and privacy-aware dashboard demos.",
   },
   {
     stage: "03",
-    title: "Build responsive interfaces that hold up",
+    title: "I try to deploy the work, not leave it stuck as code",
+    timelineLabel: "Delivery",
     detail:
-      "I translate design decisions into React components that stay consistent across screen sizes and still feel smooth in motion.",
+      "Several projects are live, so the work had to hold up beyond the editor with better routing, clearer product flow, and interfaces that feel finished instead of rushed.",
   },
   {
     stage: "04",
-    title: "Refine for trust, speed, and polish",
+    title: "The next step is product-focused engineering work",
+    timelineLabel: "Now",
     detail:
-      "The last layer is the difference-maker: hover states, cleaner copy, accessible contrast, and fewer points of friction.",
+      "I&apos;m looking for internships and full-time roles where strong frontend quality, full-stack execution, and practical AI can live in the same product.",
   },
 ];
 
@@ -37,11 +41,11 @@ export default function Experience() {
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <span className="section-label">System log</span>
-        <h2>How I approach UI and product experience.</h2>
+        <span className="section-label">Journey</span>
+        <h2>How the work has grown through shipping and hackathons.</h2>
         <p className="section-subtitle">
-          The goal is not only to make a page look good. It should feel easy to move
-          through, make the content believable, and leave a strong final impression.
+          The fastest way to understand me is through the builds I kept shipping and
+          the competitions that kept sharpening the work.
         </p>
       </motion.div>
 
@@ -57,7 +61,7 @@ export default function Experience() {
           >
             <div className="timeline-meta">
               <span className="timeline-stage">{step.stage}</span>
-              <span className="timeline-label">Design architecture</span>
+              <span className="timeline-label">{step.timelineLabel}</span>
             </div>
             <div className="timeline-content">
               <h3>{step.title}</h3>

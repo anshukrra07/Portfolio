@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import profile from "../assets/profile.jpg";
 import resume from "../assets/resume-14.pdf";
 
+const heroSignals = ["10+ hackathons", "4 wins", "5 polished builds"];
+
+const heroPreviewItems = [
+  { label: "Stack", value: "MERN + AI-enabled builds" },
+  { label: "Proof", value: "Live demos + shipped flows" },
+  { label: "Focus", value: "UI clarity · trust · motion" },
+];
+
 export default function Hero() {
   return (
     <section className="hero" id="top">
@@ -14,20 +22,34 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        <span className="hero-kicker">Available for internships and impactful product work</span>
-        <p className="hero-eyebrow">Full-stack developer · UI systems · product mindset</p>
+        {/* Availability badge */}
+        <span className="hero-kicker">
+          <span className="kicker-dot" aria-hidden="true" />
+          Available for internships &amp; full-time roles
+        </span>
+
+        <p className="hero-eyebrow">Full-stack developer · UI-focused · hackathon-tested</p>
 
         <h1 className="hero-title">
           <span className="hero-line">HIMANSHU</span>
-          <span className="hero-line hero-line-accent">BUILDS EXPERIENCES</span>
-          <span className="hero-line hero-line-meta">clear, polished, and built to stick</span>
+          <span className="hero-line hero-line-accent">KUMAR</span>
+          <span className="hero-line hero-line-meta">
+            clean interfaces · real product flows
+          </span>
         </h1>
 
         <p className="hero-lead">
-          I build frontend-heavy products with real functionality behind them, from a
-          modular camera interface to an AI-powered commerce platform and a
-          security-first dashboard walkthrough.
+          I build full-stack products that feel sharp to use and solid underneath,
+          from AI commerce and campus wellness to security dashboards and product-style UI.
         </p>
+
+        <div className="hero-signal-row" aria-label="Primary strengths">
+          {heroSignals.map((signal) => (
+            <span key={signal} className="hero-signal-chip">
+              {signal}
+            </span>
+          ))}
+        </div>
 
         <div className="hero-actions">
           <a className="btn primary" href="#projects">
@@ -51,6 +73,7 @@ export default function Hero() {
         <div className="hero-visual-shell">
           <div className="hero-orbit hero-orbit-large" aria-hidden="true" />
           <div className="hero-orbit hero-orbit-small" aria-hidden="true" />
+          <div className="hero-grid-panel" aria-hidden="true" />
 
           <div className="portrait-frame">
             <div className="portrait-glow" aria-hidden="true" />
@@ -58,18 +81,28 @@ export default function Hero() {
           </div>
 
           <div className="floating-note floating-note-top">
-            <span>Design-minded</span>
-            <strong>Clean, premium UI</strong>
+            <span>Competition-built</span>
+            <strong>10+ hackathons · 4 wins</strong>
           </div>
 
           <div className="floating-note floating-note-bottom">
-            <span>Build quality</span>
-            <strong>React, APIs, performance</strong>
+            <span>GitHub footprint</span>
+            <strong>9 public repos · live demos</strong>
           </div>
 
-          <div className="floating-note floating-note-side">
-            <span>Focus mode</span>
-            <strong>Product clarity + motion polish</strong>
+          <div className="hero-preview-card">
+            <div className="hero-preview-top">
+              <span className="hero-preview-pill">Stack signal</span>
+              <span className="hero-preview-status">Live</span>
+            </div>
+            <div className="hero-preview-list">
+              {heroPreviewItems.map((item) => (
+                <div key={item.label} className="hero-preview-row">
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="hero-signal-card">
@@ -79,7 +112,7 @@ export default function Hero() {
               <span />
               <span />
             </div>
-            <strong>Interactive systems</strong>
+            <strong>Built to ship, not just showcase</strong>
           </div>
         </div>
       </motion.div>

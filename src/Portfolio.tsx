@@ -8,32 +8,80 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Profiles from "./components/Profiles";
-import Resume from "./components/resume";
 
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Work", href: "#projects" },
   { label: "Skills", href: "#skills" },
-  { label: "Timeline", href: "#journey" },
+  { label: "Journey", href: "#journey" },
   { label: "Contact", href: "#contact" },
 ];
 
 export default function Portfolio() {
   const [activeHref, setActiveHref] = useState("");
+  const [cursorEnabled, setCursorEnabled] = useState(false);
 
   useEffect(() => {
+    const finePointerQuery = window.matchMedia("(pointer: fine)");
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const syncCursorMode = () => {
+      setCursorEnabled(finePointerQuery.matches && !reducedMotionQuery.matches);
+    };
+
+    syncCursorMode();
+    finePointerQuery.addEventListener("change", syncCursorMode);
+    reducedMotionQuery.addEventListener("change", syncCursorMode);
+
+    return () => {
+      finePointerQuery.removeEventListener("change", syncCursorMode);
+      reducedMotionQuery.removeEventListener("change", syncCursorMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    const previousScrollRestoration =
+      "scrollRestoration" in window.history ? window.history.scrollRestoration : null;
+
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    let scrollFrame = 0;
+    let visualFrame = 0;
 
-    let frame = 0;
+    const syncHashScroll = () => {
+      const hash = window.location.hash;
+
+      if (hash) {
+        const target = document.querySelector<HTMLElement>(hash);
+
+        if (target) {
+          target.scrollIntoView({ block: "start", behavior: "auto" });
+          setActiveHref(hash);
+          return;
+        }
+      }
+
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      setActiveHref("");
+    };
+
+    const queueInitialScroll = () => {
+      if (scrollFrame) {
+        window.cancelAnimationFrame(scrollFrame);
+      }
+
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = window.requestAnimationFrame(syncHashScroll);
+      });
+    };
+
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
 
     const updateVisuals = () => {
-      frame = 0;
+      visualFrame = 0;
       const xRatio = pointerX / window.innerWidth - 0.5;
       const yRatio = pointerY / window.innerHeight - 0.5;
       const scrollRatio =
@@ -47,8 +95,8 @@ export default function Portfolio() {
     };
 
     const requestVisualUpdate = () => {
-      if (!frame) {
-        frame = window.requestAnimationFrame(updateVisuals);
+      if (!visualFrame) {
+        visualFrame = window.requestAnimationFrame(updateVisuals);
       }
     };
 
@@ -64,14 +112,24 @@ export default function Portfolio() {
 
     window.addEventListener("pointermove", handlePointerMove);
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", syncHashScroll);
     updateVisuals();
+    queueInitialScroll();
 
     return () => {
-      if (frame) {
-        window.cancelAnimationFrame(frame);
+      if (scrollFrame) {
+        window.cancelAnimationFrame(scrollFrame);
+      }
+      if (visualFrame) {
+        window.cancelAnimationFrame(visualFrame);
       }
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", syncHashScroll);
+
+      if (previousScrollRestoration && "scrollRestoration" in window.history) {
+        window.history.scrollRestoration = previousScrollRestoration;
+      }
     };
   }, []);
 
@@ -119,7 +177,6 @@ export default function Portfolio() {
     ];
 
     const tiltSelectors = [
-      ".proof-card",
       ".stat-card",
       ".project-card",
       ".case-study-shell",
@@ -200,17 +257,24 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="portfolio-shell">
+    <div className={`portfolio-shell${cursorEnabled ? " cursor-enabled" : ""}`}>
       <Starfield />
       <div className="page-aura page-aura-left" aria-hidden="true" />
       <div className="page-aura page-aura-right" aria-hidden="true" />
       <div className="page-aura page-aura-center" aria-hidden="true" />
+      {cursorEnabled ? (
+        <>
+          <div className="custom-cursor-dot" aria-hidden="true" />
+          <div className="custom-cursor-ring" aria-hidden="true" />
+        </>
+      ) : null}
 
       <header className="topbar">
         <a className="brand" href="#top" aria-label="Go to top of portfolio">
           <span className="brand-mark">HK</span>
           <span className="brand-copy">
             <strong>Himanshu Kumar</strong>
+            {/* FIXED: consistent identity — full-stack developer everywhere */}
             <span>Full-stack developer</span>
           </span>
         </a>
@@ -244,8 +308,8 @@ export default function Portfolio() {
         <Skills />
         <div className="scan-divider" aria-hidden="true" />
         <Experience />
+        {/* Resume section removed — folded into Profiles/Contact below */}
         <Profiles />
-        <Resume />
       </main>
 
       <footer className="footer">
@@ -254,7 +318,7 @@ export default function Portfolio() {
           <span className="footer-dot" aria-hidden="true" />
           <span>Open to opportunities</span>
         </div>
-        <a href="#top">Back to top</a>
+        <a href="#top">Back to top ↑</a>
       </footer>
     </div>
   );
